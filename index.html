@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Assisting Scheduling Practice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+<section class="calendar-card">
+      <div class="calendar-controls">
+        <button id="prev-month" class="nav-btn" type="button" aria-label="Previous month">‹</button>
+
+        <div class="month-selectors">
+          <select id="month-select" aria-label="Month"></select>
+          <select id="year-select" aria-label="Year"></select>
+        </div>
+
+        <button id="next-month" class="nav-btn" type="button" aria-label="Next month">›</button>
+      </div>
+
+      <div class="weekday-row">
+        <div>Sunday</div>
+        <div>Monday</div>
+        <div>Tuesday</div>
+        <div>Wednesday</div>
+        <div>Thursday</div>
+        <div>Friday</div>
+        <div>Saturday</div>
+      </div>
+
+      <div id="calendar-grid" class="calendar-grid"></div>
+
+      <div class="legend">
+        <span><span class="dot available"></span> Appointment available</span>
+        <span><span class="dot unavailable"></span> No openings</span>
+      </div>
+    </section>
+
+    <section id="day-panel" class="panel hidden">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">AVAILABLE APPOINTMENTS</p>
+          <h2 id="day-title"></h2>
+        </div>
+        <button id="close-day" class="close-btn" type="button" aria-label="Close">×</button>
+      </div>
+
+      <div id="day-content"></div>
+    </section>
+  </main>
+
+  <div id="booking-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="booking-title">
+    <div class="modal">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">SCHEDULE PATIENT</p>
+          <h2 id="booking-title">Appointment Information</h2>
+          <p id="appointment-summary" class="appointment-summary"></p>
+        </div>
+        <button id="close-booking" class="close-btn" type="button" aria-label="Close">×</button>
+      </div>
+
+      <form id="booking-form">
+        <div class="form-grid">
+          <label>
+            <span>Patient First Name</span>
+            <input id="patient-first-name" type="text" required>
+          </label>
+
+          <label>
+            <span>Patient Last Name</span>
+            <input id="patient-last-name" type="text" required>
+          </label>
+
+          <label>
+            <span>Date of Birth</span>
+            <input id="patient-dob" type="text" placeholder="MM/DD/YYYY" maxlength="10" required>
+          </label>
+
+          <label>
+            <span>Patient ID</span>
+            <input id="patient-id" type="text" required>
+          </label>
+
+          <label>
+            <span>Phone Number</span>
+            <input id="patient-phone" type="tel" required>
+          </label>
+        </div>
+
+        <fieldset>
+          <legend>Contact Method</legend>
+          <label class="radio-row">
+            <input type="radio" name="contact" value="Talked with patient on phone" required>
+            <span>Talked with patient on phone</span>
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="contact" value="Face to face">
+            <span>Face to face</span>
+          </label>
+          <label class="radio-row">
+            <input type="radio" name="contact" value="Left voicemail">
+            <span>Left voicemail</span>
+          </label>
+        </fieldset>
+
+        <label class="notes-label">
+          <span>Note</span>
+          <textarea id="patient-note" rows="5" required></textarea>
+        </label>
+
+        <div class="actions">
+          <button class="primary-btn" type="submit">Schedule Appointment</button>
+          <button id="cancel-booking" class="secondary-btn" type="button">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="confirmation-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="confirmation-title">
+    <div class="modal">
+      <div id="confirmation-content"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
