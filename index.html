@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medical Assisting Patient Lookup</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Medical Assisting Training</p>
+        <h1>Patient Lookup</h1>
+        <p class="subtitle">Search the chart and verify the correct patient before reviewing notes.</p>
+      </div>
+    </header>
+
+    <section class="lookup-card">
+      <form id="patient-search-form" novalidate>
+        <div class="form-grid">
+          <label><span>First Name</span><input id="first-name" type="text" autocomplete="off" /></label>
+          <label><span>Last Name</span><input id="last-name" type="text" autocomplete="off" /></label>
+          <label><span>Date of Birth</span><input id="dob" type="text" inputmode="numeric" placeholder="MM/DD/YYYY" maxlength="10" autocomplete="off" /></label>
+        </div>
+        <div class="form-actions">
+          <button class="primary-button" type="submit">Search Patient</button>
+          <button class="secondary-button" id="clear-search" type="button">Clear</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="message-area" aria-live="polite"></section>
+    <section id="patient-result"></section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
