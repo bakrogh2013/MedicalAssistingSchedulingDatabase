@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MTECH Appointment Practice</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Medical Assisting Training</p>
+        <h1>Appointment Availability</h1>
+        <p class="subtitle">
+          Select a month, review available appointment times, and practice documenting the patient interaction.
+        </p>
+      </div>
+    </header>
+
+    <section class="calendar-card" aria-labelledby="calendar-heading">
+      <div class="calendar-toolbar">
+        <div>
+          <h2 id="calendar-heading">Appointment Calendar</h2>
+          <p class="toolbar-note">Availability is intentionally limited. Sundays have no appointments.</p>
+        </div>
+
+        <div class="selectors">
+          <label>
+            <span>Month</span>
+            <select id="month-select"></select>
+          </label>
+
+          <label>
+            <span>Year</span>
+            <select id="year-select"></select>
+          </label>
+        </div>
+      </div>
+
+      <div class="calendar-weekdays" aria-hidden="true">
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+      </div>
+
+      <div id="calendar-grid" class="calendar-grid" aria-live="polite"></div>
+
+      <div class="calendar-legend">
+        <span><span class="legend-dot available-dot"></span> Availability</span>
+        <span><span class="legend-dot unavailable-dot"></span> No openings</span>
+      </div>
+    </section>
+
+    <section id="day-panel" class="day-panel hidden" aria-live="polite">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Selected Day</p>
+          <h2 id="selected-date-heading">Available Appointments</h2>
+        </div>
+        <button id="close-day-panel" class="icon-button" type="button" aria-label="Close selected day">×</button>
+      </div>
+
+      <div id="day-message"></div>
+      <div id="slot-list" class="slot-list"></div>
+    </section>
+
+    <section id="booking-panel" class="booking-panel hidden" aria-live="polite">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Practice Documentation</p>
+          <h2>Schedule Appointment</h2>
+          <p id="selected-slot-summary" class="selected-slot-summary"></p>
+        </div>
+        <button id="close-booking-panel" class="icon-button" type="button" aria-label="Close appointment form">×</button>
+      </div>
+
+      <form id="booking-form" novalidate>
+        <div class="form-grid">
+          <label>
+            <span>Patient Name</span>
+            <input id="patient-name" type="text" autocomplete="off" required />
+          </label>
+
+          <label>
+            <span>Date of Birth</span>
+            <input
+              id="patient-dob"
+              type="text"
+              inputmode="numeric"
+              placeholder="MM/DD/YYYY"
+              maxlength="10"
+              autocomplete="off"
+              required
+            />
+          </label>
+
+          <label>
+            <span>Patient ID</span>
+            <input id="patient-id" type="text" autocomplete="off" required />
+          </label>
+
+          <label>
+            <span>Phone Number</span>
+            <input id="patient-phone" type="tel" autocomplete="off" required />
+          </label>
+        </div>
+
+        <fieldset class="contact-method">
+          <legend>How was the patient contacted?</legend>
+
+          <label class="radio-option">
+            <input type="radio" name="contactMethod" value="Talked with patient on phone" required />
+            <span>Talked with patient on phone</span>
+          </label>
+
+          <label class="radio-option">
+            <input type="radio" name="contactMethod" value="Face to face" required />
+            <span>Face to face</span>
+          </label>
+
+          <label class="radio-option">
+            <input type="radio" name="contactMethod" value="Left voicemail" required />
+            <span>Left voicemail</span>
+          </label>
+        </fieldset>
+
+        <label class="note-field">
+          <span>Note</span>
+          <textarea
+            id="patient-note"
+            rows="5"
+            placeholder="Enter the documentation note for this practice interaction."
+            required
+          ></textarea>
+        </label>
+
+        <div class="form-actions">
+          <button class="primary-button" type="submit">Complete Practice Appointment</button>
+          <button class="secondary-button" id="cancel-booking" type="button">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="confirmation-panel" class="confirmation-panel hidden" aria-live="polite"></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
